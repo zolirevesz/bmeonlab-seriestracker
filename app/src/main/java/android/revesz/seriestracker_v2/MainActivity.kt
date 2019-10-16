@@ -18,6 +18,7 @@ import retrofit2.Retrofit
 import com.google.gson.GsonBuilder
 import com.google.gson.Gson
 import android.os.AsyncTask.execute
+import android.revesz.seriestracker_v2.remote.RemoteServiceInterface
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import okhttp3.OkHttpClient
@@ -53,6 +54,8 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
+
+        /*
         // Trailing slash is needed
         val BASE_URL = "https://api.themoviedb.org/3/"
         var retrofit = Retrofit.Builder()
@@ -74,6 +77,20 @@ class MainActivity : AppCompatActivity() {
             .build()
 
         var response = client.newCall(request).execute()
+
+         */
+
+        // TODO: How to use this?
+        // var client: RemoteServiceInterface = RetrofitClient.webservice
+
+
+        // TODO: Ez a függvény a RetrofitCLient-ba megy, es akkor lehet használni a fentebbi sort (asszem)
+        val webservice by lazy {
+            Retrofit.Builder()
+                .baseUrl("https://api.themoviedb.org/3/")
+                .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
+                .build().create(RemoteServiceInterface::class.java)
+        }
 
     }
 

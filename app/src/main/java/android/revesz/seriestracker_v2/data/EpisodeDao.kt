@@ -1,6 +1,5 @@
 package android.revesz.seriestracker_v2.data
 
-import android.revesz.seriestracker_v2.data.Episode
 import androidx.room.*
 
 @Dao
@@ -12,8 +11,8 @@ interface EpisodeDao {
     @Query("SELECT * FROM Episode")
     fun getAll(): List<Episode>
 
-    @Query("SELECT * FROM Episode WHERE season_id = :id")
-    fun getAllForSeason(id: Int): List<Episode>
+    @Query("SELECT * FROM Episode WHERE season_number = :season_number")
+    fun getAllForSeason(season_number: Int): List<Episode>
 
     @Update
     fun updateEpisode(episode: Episode): Int

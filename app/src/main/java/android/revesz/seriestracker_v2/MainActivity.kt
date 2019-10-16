@@ -13,6 +13,16 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.Retrofit
+import com.google.gson.GsonBuilder
+import com.google.gson.Gson
+import android.os.AsyncTask.execute
+import okhttp3.MediaType
+import okhttp3.RequestBody
+import okhttp3.OkHttpClient
+import okhttp3.Request
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -42,6 +52,29 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        // Trailing slash is needed
+        val BASE_URL = "https://api.themoviedb.org/3/"
+        var retrofit = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        var gson = GsonBuilder()
+            .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
+            .create()
+
+        var client = OkHttpClient()
+
+        var mediaType = MediaType.parse("application/octet-stream")
+        var body = RequestBody.create(mediaType, "{}")
+        var request = Request.Builder()
+            .url("https://api.themoviedb.org/3/authentication/token/new?api_key=bcdaca52188a516d75a354990cc5981c")
+            .get()
+            .build()
+
+        var response = client.newCall(request).execute()
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

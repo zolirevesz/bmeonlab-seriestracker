@@ -16,3 +16,13 @@ data class Series(
     @ColumnInfo(name = "description")
     var description: String = ""
 ) : Serializable
+
+data class Genre(
+    val id: String,
+    val name: String
+)
+data class SeriesResponse(
+    val original_name : String,
+    val languages : List<String>,
+    val genres: List<Genre>
+)

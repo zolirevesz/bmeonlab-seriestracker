@@ -9,23 +9,24 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import android.revesz.seriestracker_v2.R
+import kotlinx.android.synthetic.main.fragment_allseries.*
 
 class AllSeriesFragment : Fragment() {
 
-    private lateinit var allSeriesViewModel: AllSeriesViewModel
+    private val allSeriesViewModel by lazy { ViewModelProviders.of(this)[AllSeriesViewModel::class.java] }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        allSeriesViewModel =
-            ViewModelProviders.of(this).get(AllSeriesViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_allseries, container, false)
-        val textView: TextView = root.findViewById(R.id.text_gallery)
+    ) = inflater.inflate(R.layout.fragment_allseries, container, false)
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
         allSeriesViewModel.text.observe(this, Observer {
-            textView.text = it
+            text_gallery.text = it
         })
-        return root
     }
 }

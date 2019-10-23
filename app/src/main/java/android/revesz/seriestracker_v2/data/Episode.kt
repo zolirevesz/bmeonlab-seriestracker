@@ -1,6 +1,7 @@
 package android.revesz.seriestracker_v2.data
 
 import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import java.io.Serializable
@@ -8,7 +9,7 @@ import java.sql.Date
 
 
 @Entity
-data class oldEpisode(
+data class Episode(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
     @ColumnInfo(name = "season_id")
@@ -26,12 +27,15 @@ data class oldEpisode(
 ) : Serializable
 
 @Entity
-data class Episode(
+data class EpisodeResponse(
     val id : Int,
     val episode_number : Int,
     val name : String,
     val overview : String,
     val season_number : Int,
-    val air_date : String
+
+    val air_date : String,
     // TODO season_finale és rating?
+    @Embedded
+    val season_finale: Boolean
 )

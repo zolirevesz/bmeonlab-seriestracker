@@ -54,43 +54,13 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-
-        /*
-        // Trailing slash is needed
-        val BASE_URL = "https://api.themoviedb.org/3/"
-        var retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        var gson = GsonBuilder()
-            .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")
-            .create()
-
-        var client = OkHttpClient()
-
-        var mediaType = MediaType.parse("application/octet-stream")
-        var body = RequestBody.create(mediaType, "{}")
-        var request = Request.Builder()
-            .url("https://api.themoviedb.org/3/authentication/token/new?api_key=bcdaca52188a516d75a354990cc5981c")
-            .get()
-            .build()
-
-        var response = client.newCall(request).execute()
-
-         */
-
-        // TODO: How to use this?
-        // var client: RemoteServiceInterface = RetrofitClient.webservice
-
-
-        // TODO: Ez a függvény a RetrofitCLient-ba megy, es akkor lehet használni a fentebbi sort (asszem)
         val webservice by lazy {
             Retrofit.Builder()
                 .baseUrl("https://api.themoviedb.org/3/")
                 .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
                 .build().create(RemoteServiceInterface::class.java)
         }
+        // TODO: így használd: webservice.
 
     }
 

@@ -6,7 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class oldSeason(
+data class Season(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
     @ColumnInfo(name = "series_id")
@@ -18,8 +18,8 @@ data class oldSeason(
 ) : Serializable
 
 @Entity
-data class Season (
-    val episode_count : Int,
+data class SeasonResponse (
+    val episodes : List<EpisodeResponse>,
     val id : Int,
     val name : String,
     val overview : String,

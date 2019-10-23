@@ -6,7 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class oldSeries(
+data class Series(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
     @ColumnInfo(name = "series_name")
@@ -23,7 +23,7 @@ data class Genre(
 )
 
 @Entity
-data class Series(
+data class SeriesResponse(
     val name : String,
     val languages : List<String>,
     val genres: List<Genre>,

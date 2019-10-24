@@ -13,6 +13,6 @@ class AllSeriesViewModel internal constructor(seriesRepository: SeriesRepository
     }
     val text: LiveData<String> = _text
 
-//    val series: LiveData<List<Series>> = seriesRepository.getSeries()
+    // val series: LiveData<List<Series>> = seriesRepository.getSeries()
 
 }

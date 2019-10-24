@@ -60,7 +60,7 @@ class MainActivity : AppCompatActivity() {
                 .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
                 .build().create(RemoteServiceInterface::class.java)
         }
-        // TODO: így használd: webservice.
+        // így használd: webservice.
 
     }
 

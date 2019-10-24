@@ -22,7 +22,6 @@ data class Genre(
     val name: String
 )
 
-@Entity
 data class SeriesResponse(
     val name : String,
     val languages : List<String>,

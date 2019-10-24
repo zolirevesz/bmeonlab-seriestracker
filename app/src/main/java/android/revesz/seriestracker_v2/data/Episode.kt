@@ -26,7 +26,7 @@ data class Episode(
     var airDate: String = ""
 ) : Serializable
 
-@Entity
+
 data class EpisodeResponse(
     val id : Int,
     val episode_number : Int,
@@ -35,7 +35,7 @@ data class EpisodeResponse(
     val season_number : Int,
 
     val air_date : String,
-    // TODO season_finale és rating?
+    // season_finale és rating?
     @Embedded
     val season_finale: Boolean
 )

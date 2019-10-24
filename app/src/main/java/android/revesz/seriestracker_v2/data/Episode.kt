@@ -26,7 +26,7 @@ data class Episode(
     var airDate: String = ""
 ) : Serializable
 
-@Entity
+
 data class EpisodeResponse(
     val id : Int,
     val episode_number : Int,

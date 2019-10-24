@@ -17,7 +17,7 @@ data class Season(
     var description: String = ""
 ) : Serializable
 
-@Entity
+
 data class SeasonResponse (
     val episodes : List<EpisodeResponse>,
     val id : Int,

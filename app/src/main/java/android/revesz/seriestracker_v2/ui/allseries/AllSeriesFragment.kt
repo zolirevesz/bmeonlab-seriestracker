@@ -9,7 +9,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import android.revesz.seriestracker_v2.R
+import android.revesz.seriestracker_v2.remote.RemoteServiceInterface
+import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.fragment_allseries.*
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class AllSeriesFragment : Fragment() {
 
@@ -26,7 +30,8 @@ class AllSeriesFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         allSeriesViewModel.text.observe(this, Observer {
-            text_gallery.text = it
+            //text_gallery.text = it
         })
+
     }
 }

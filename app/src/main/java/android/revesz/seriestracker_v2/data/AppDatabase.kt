@@ -7,10 +7,10 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 
-@Database(entities = [Series::class, Season::class, Episode::class], version = 1, exportSchema = false)
+@Database(entities = [LocalData::class], version = 1, exportSchema = false)
 @TypeConverters(Converters::class)
 abstract class AppDatabase : RoomDatabase() {
-    abstract fun seriesDao(): SeriesDao
+    abstract fun localDataDao(): LocalDataDao
 
     companion object {
         // For Singleton instantiation

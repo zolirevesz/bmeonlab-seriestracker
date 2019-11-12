@@ -54,14 +54,6 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        val webservice by lazy {
-            Retrofit.Builder()
-                .baseUrl("https://api.themoviedb.org/3/")
-                .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-                .build().create(RemoteServiceInterface::class.java)
-        }
-        // így használd: webservice.
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

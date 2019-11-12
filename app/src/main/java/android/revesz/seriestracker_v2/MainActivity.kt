@@ -13,6 +13,17 @@ import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import android.view.Menu
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.Retrofit
+import com.google.gson.GsonBuilder
+import com.google.gson.Gson
+import android.os.AsyncTask.execute
+import android.revesz.seriestracker_v2.remote.RemoteServiceInterface
+import okhttp3.MediaType
+import okhttp3.RequestBody
+import okhttp3.OkHttpClient
+import okhttp3.Request
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,12 +47,13 @@ class MainActivity : AppCompatActivity() {
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
+                R.id.nav_home, R.id.nav_allseries, R.id.nav_slideshow,
                 R.id.nav_tools, R.id.nav_share, R.id.nav_send
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

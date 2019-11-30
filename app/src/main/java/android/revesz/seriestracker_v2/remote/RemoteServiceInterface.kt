@@ -11,7 +11,7 @@ import retrofit2.http.Query
 interface RemoteServiceInterface {
 
     @GET("tv/{tv_id}")
-    suspend fun listSeries(@Path("tv_id") id: Int, @Query("api_key") apikey: String): SeriesResponse
+    suspend fun getSeries(@Path("tv_id") id: Int, @Query("api_key") apikey: String): SeriesResponse
 
     @GET("tv/{tv_id}/season/{season_number}")
     suspend fun getSeason(@Path("rv_id") id : Int, @Path("season_number") season_number : Int, @Query("api_key") apikey : String) : SeasonResponse

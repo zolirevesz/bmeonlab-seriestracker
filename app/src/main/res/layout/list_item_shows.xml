@@ -39,7 +39,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_normal"
                 android:layout_marginTop="@dimen/margin_normal"
-                android:text="@{plant.name}"
+                android:text="@{series.seriesName}"
                 android:textAppearance="?attr/textAppearanceListItem"
                 android:gravity="center_horizontal"
                 app:layout_constraintEnd_toEndOf="parent"

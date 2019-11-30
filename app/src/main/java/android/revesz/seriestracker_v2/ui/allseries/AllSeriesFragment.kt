@@ -29,8 +29,8 @@ class AllSeriesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        allSeriesViewModel.text.observe(this, Observer {
-            //text_gallery.text = it
+        allSeriesViewModel.list.observe(this, Observer {
+            //series_list.
         })
 
     }

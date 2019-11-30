@@ -15,7 +15,11 @@
         android:id="@+id/nav_allseries"
         android:name="android.revesz.seriestracker_v2.ui.allseries.AllSeriesFragment"
         android:label="@string/menu_allseries"
-        tools:layout="@layout/fragment_allseries" />
+        tools:layout="@layout/fragment_allseries" >
+        <action
+            android:id="@+id/action_nav_allseries_to_showDetailsFragment"
+            app:destination="@id/showDetailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_slideshow"
@@ -40,4 +44,12 @@
         android:name="android.revesz.seriestracker_v2.ui.send.SendFragment"
         android:label="@string/menu_send"
         tools:layout="@layout/fragment_send" />
+    <fragment
+        android:id="@+id/showDetailsFragment"
+        android:name="android.revesz.seriestracker_v2.ShowDetailsFragment"
+        android:label="ShowDetailsFragment" >
+        <argument
+            android:name="showId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

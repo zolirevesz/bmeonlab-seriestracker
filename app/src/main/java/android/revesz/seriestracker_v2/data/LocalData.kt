@@ -2,6 +2,8 @@ package android.revesz.seriestracker_v2.data
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.ForeignKey.CASCADE
 import androidx.room.PrimaryKey
 import java.io.Serializable
 
@@ -15,24 +17,34 @@ data class LocalData (
     var seasonsNumber: Int = 0,
     @ColumnInfo(name = "description")
     var description: String = ""
-    // TODO error: Cannot figure out how to save this field into database. You can consider adding a type converter for it.
-    //    private java.util.List<android.revesz.seriestracker_v2.data.Season> seasons;
-    // @ColumnInfo(name = "seasons")
-    // var seasons: List<Season>
 ) : Serializable
 
+@Entity(foreignKeys = [ForeignKey(entity = LocalData::class,
+                                    parentColumns = arrayOf("id"),
+                                    childColumns = arrayOf("seriesId"),
+                                    onDelete = CASCADE)])
 data class Season(
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0,
+    @ColumnInfo(name = "series_id")
+    var seriesId: Int = 0,
     @ColumnInfo(name = "season_number")
     var seasonNumber: Int = 0,
     @ColumnInfo(name = "description")
     var description: String = "",
     @ColumnInfo(name = "episodes_number")
-    var episodesNumber: Int = 0,
-    @ColumnInfo(name = "episodes")
-    var episodes: List<Episode>
+    var episodesNumber: Int = 0
 ) : Serializable
 
+@Entity(foreignKeys = [ForeignKey(entity = LocalData::class,
+                                    parentColumns = arrayOf("id"),
+                                    childColumns = arrayOf("seasonId"),
+                                    onDelete = CASCADE)])
 data class Episode(
+    @PrimaryKey(autoGenerate = true)
+    var id: Int = 0,
+    @ColumnInfo(name = "season_id")
+    var seasonId: Int = 0,
     @ColumnInfo(name = "episode_name")
     var episodeName: String = "",
     @ColumnInfo(name = "episode_number")
@@ -46,3 +58,5 @@ data class Episode(
     @ColumnInfo(name = "air_date")
     var airDate: String = ""
 ) : Serializable
+
+// https://android.jlelse.eu/android-architecture-components-room-relationships-bf473510c14a

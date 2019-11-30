@@ -1,5 +1,6 @@
 package android.revesz.seriestracker_v2.ui.allseries
 
+import android.revesz.seriestracker_v2.data.LocalData
 import android.revesz.seriestracker_v2.data.SeriesRepository
 import android.revesz.seriestracker_v2.remote.RemoteServiceInterface
 import androidx.lifecycle.LiveData
@@ -15,6 +16,9 @@ class AllSeriesViewModel internal constructor(seriesRepository: SeriesRepository
         value = "This is All Series Fragment"
     }
     val text: LiveData<String> = _text
+
+    private val _list = MutableLiveData<List<LocalData>>()
+    val list: LiveData<List<LocalData>> = _list
 
     // val series: LiveData<List<Series>> = seriesRepository.getSeries()
 

@@ -40,7 +40,6 @@ class AllSeriesAdapter : ListAdapter<LocalData, RecyclerView.ViewHolder>(SeriesD
             series: LocalData,
             it: View
         ) {
-            // TODO rajzolni a navigation.xml-be
             val direction =
                 AllSeriesFragmentDirections.actionNavAllseriesToShowDetailsFragment(
                     series.id

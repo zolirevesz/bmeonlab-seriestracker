@@ -7,7 +7,7 @@ xmlns:tools="http://schemas.android.com/tools">
     <import type="android.revesz.seriestracker_v2.data.LocalData"/>
     <variable
         name="viewModel"
-        type="android.revesz.seriestracker_v2.ShowDetailsViewModel" />
+        type="android.revesz.seriestracker_v2.viewmodels.ShowDetailsViewModel" />
     <variable
         name="callback"
         type="android.revesz.seriestracker_v2.ShowDetailsFragment.Callback" />
@@ -18,7 +18,6 @@ xmlns:tools="http://schemas.android.com/tools">
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="?attr/colorSurface"
-    tools:context="com.google.samples.apps.sunflower.GardenActivity"
     tools:ignore="MergeRootFrame">
 
     <androidx.core.widget.NestedScrollView
@@ -41,12 +40,12 @@ xmlns:tools="http://schemas.android.com/tools">
                 android:layout_marginStart="@dimen/margin_small"
                 android:layout_marginEnd="@dimen/margin_small"
                 android:gravity="center_horizontal"
-                android:text="@{viewModel.series.name}"
+                android:text="@{viewModel.series.seriesName}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="The Crown" />
+                tools:text="Show name" />
 
             <TextView
                 android:id="@+id/number_of_seasons_header"
@@ -65,7 +64,7 @@ xmlns:tools="http://schemas.android.com/tools">
                 app:layout_constraintTop_toBottomOf="@id/show_detail_name" />
 
             <TextView
-                android:id="@+id/plant_watering"
+                android:id="@+id/show_seasonnumber"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin_small"
@@ -74,11 +73,11 @@ xmlns:tools="http://schemas.android.com/tools">
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/number_of_seasons_header"
-                app:wateringText="@{viewModel.plant.wateringInterval}"
-                tools:text="2 seasons" />
+                app:seasonNumberText="@{viewModel.series.seasonsNumber}"
+                tools:text="X seasons" />
 
             <TextView
-                android:id="@+id/plant_description"
+                android:id="@+id/show_description"
                 style="?android:attr/textAppearanceMedium"
                 android:layout_width="366dp"
                 android:layout_height="618dp"
@@ -89,7 +88,7 @@ xmlns:tools="http://schemas.android.com/tools">
                 android:textIsSelectable="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/plant_watering"
+                app:layout_constraintTop_toBottomOf="@id/show_seasonnumber"
                 app:renderHtml="@{viewModel.series.description}"
                 tools:text="Details about the show" />
 
@@ -99,22 +98,14 @@ xmlns:tools="http://schemas.android.com/tools">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
-        style="@style/Widget.MaterialComponents.FloatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/fab_margin"
+        android:clickable="true"
+        android:layout_gravity="bottom|end"
+        app:srcCompat="@drawable/ic_add_black_24dp"
+        app:isAdded="@{viewModel.isAdded}"
         android:onClick="@{() -> callback.add(viewModel.series)}"
-        android:tint="@android:color/white"
-        app:borderWidth="0.5dp"
-        app:fabSize="auto"
-        app:hoveredFocusedTranslationZ="2dp"
-        app:isGone="@{viewModel.isAdded}"
-        app:layout_anchor="@id/show_detail_name"
-        app:layout_anchorGravity="bottom|end"
-        app:maxImageSize="24dp"
-        app:pressedTranslationZ="6dp"
-        app:shapeAppearance="@style/ShapeAppearance.Series.FAB"
-        app:srcCompat="@drawable/ic_plus" />
+        app:shapeAppearance="@style/ShapeAppearance.Series.FAB"/>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
 

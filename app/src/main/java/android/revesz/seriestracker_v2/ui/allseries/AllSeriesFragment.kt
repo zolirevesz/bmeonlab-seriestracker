@@ -10,6 +10,8 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import android.revesz.seriestracker_v2.R
 import android.revesz.seriestracker_v2.remote.RemoteServiceInterface
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.fragment_allseries.*
 import retrofit2.Retrofit
@@ -34,4 +36,6 @@ class AllSeriesFragment : Fragment() {
         })
 
     }
+
+
 }

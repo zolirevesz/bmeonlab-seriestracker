@@ -24,12 +24,4 @@ class AllSeriesViewModel internal constructor(seriesRepository: SeriesRepository
 
     //val shows: LiveData<List<SeriesResponse>> = webservice.listSeries()
 
-    val webservice by lazy {
-        Retrofit.Builder()
-            .baseUrl("https://api.themoviedb.org/3/")
-            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
-            .build().create(RemoteServiceInterface::class.java)
-    }
-    // így használd: webservice.
-
 }

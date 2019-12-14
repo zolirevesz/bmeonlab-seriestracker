@@ -5,7 +5,7 @@ import androidx.room.*
 @Dao
 interface LocalDataDao {
     @Insert
-    fun insertAll(vararg serieslist: LocalData)
+    fun insertAll(serieslist: List<LocalData>)
 
     @Query("SELECT * FROM LocalData")
     fun getAll(): List<LocalData>

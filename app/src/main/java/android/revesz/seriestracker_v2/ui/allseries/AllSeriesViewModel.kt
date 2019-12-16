@@ -17,11 +17,6 @@ class AllSeriesViewModel internal constructor(seriesRepository: SeriesRepository
     }
     val text: LiveData<String> = _text
 
-    private val _list = MutableLiveData<List<LocalData>>()
-    val list: LiveData<List<LocalData>> = _list
-
-    // val series: LiveData<List<Series>> = seriesRepository.getSeries()
-
-    //val shows: LiveData<List<SeriesResponse>> = webservice.listSeries()
+    val list: LiveData<List<LocalData>> = seriesRepository.getSeries() as LiveData<List<LocalData>>
 
 }

@@ -10,8 +10,7 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.google.gson.GsonBuilder
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -37,18 +36,18 @@ abstract class AppDatabase : RoomDatabase() {
             }
         }
 
-        // TODO: Find a way to populate database with items fetched from TheMovieDatabase
         private fun buildDatabase(context: Context): AppDatabase {
             return Room.databaseBuilder(context, AppDatabase::class.java, "series-db")
                 .addCallback(object : RoomDatabase.Callback() {
                     override fun onCreate(db: SupportSQLiteDatabase) {
                         super.onCreate(db)
-                        ioThread {
-                            runBlocking {
-                                val seriesList: List<SeriesResponse> = webservice.getList(127030, "bcdaca52188a516d75a354990cc5981c")
-                                getInstance(context).localDataDao().insertAll(
-                                    seriesResponseToLocalData(seriesList))
-                            }
+                        GlobalScope.launch(Dispatchers.IO) {
+
+                            val seriesList: List<SeriesResponse> =
+                                webservice.getList(127030, "bcdaca52188a516d75a354990cc5981c")
+                            getInstance(context).localDataDao().insertAll(
+                                seriesResponseToLocalData(seriesList)
+                            )
                         }
                     }
                 })

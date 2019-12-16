@@ -1,40 +1,53 @@
 package android.revesz.seriestracker_v2.ui.allseries
 
 import android.os.Bundle
+import android.revesz.seriestracker_v2.data.LocalData
+import android.revesz.seriestracker_v2.databinding.FragmentAllseriesBinding
+import android.revesz.seriestracker_v2.utilities.InjectorUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import android.revesz.seriestracker_v2.R
-import android.revesz.seriestracker_v2.remote.RemoteServiceInterface
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import com.google.gson.GsonBuilder
+import androidx.lifecycle.observe
 import kotlinx.android.synthetic.main.fragment_allseries.*
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class AllSeriesFragment : Fragment() {
 
-    private val allSeriesViewModel by lazy { ViewModelProviders.of(this)[AllSeriesViewModel::class.java] }
+    private val allSeriesViewModel: AllSeriesViewModel by viewModels {
+        InjectorUtils.provideAllSeriesViewModelFactory(requireContext())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = inflater.inflate(R.layout.fragment_allseries, container, false)
+    ): View? {
+        val binding = FragmentAllseriesBinding.inflate(inflater, container, false)
+        context ?: return binding.root
 
+        val adapter = AllSeriesAdapter()
+        binding.seriesList.adapter = adapter
+        subscribeUi(adapter)
 
+        setHasOptionsMenu(true)
+        return binding.root
+    }
+
+/*
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         allSeriesViewModel.list.observe(this, Observer {
             //series_list.
         })
+    }
+*/
 
+    private fun subscribeUi(adapter: AllSeriesAdapter) {
+        allSeriesViewModel.list.observe(viewLifecycleOwner) { list ->
+            adapter.submitList(listOf(LocalData(3, "DummyShowX", 1, "Erc")))
+        }
     }
 
 

@@ -16,7 +16,9 @@ data class LocalData (
     @ColumnInfo(name = "seasons_number")
     var seasonsNumber: Int = 0,
     @ColumnInfo(name = "description")
-    var description: String = ""
+    var description: String = "",
+    @ColumnInfo(name = "isadded")
+    var isAdded: Boolean =  false
 ) : Serializable
 
 @Entity(foreignKeys = [ForeignKey(entity = LocalData::class,

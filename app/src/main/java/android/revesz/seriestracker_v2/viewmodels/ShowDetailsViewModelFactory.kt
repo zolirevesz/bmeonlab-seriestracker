@@ -6,7 +6,6 @@ import androidx.lifecycle.ViewModelProvider
 
 class ShowDetailsViewModelFactory(
     private val seriesRepository: SeriesRepository,
-    //private val gardenPlantingRepository: GardenPlantingRepository,
     private val showId: Int
 ) : ViewModelProvider.NewInstanceFactory() {
 
@@ -14,7 +13,6 @@ class ShowDetailsViewModelFactory(
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         return ShowDetailsViewModel(
             seriesRepository,
-            //gardenPlantingRepository,
             showId
         ) as T
     }

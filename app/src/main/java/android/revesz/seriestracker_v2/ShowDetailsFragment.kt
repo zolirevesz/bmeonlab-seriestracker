@@ -8,10 +8,12 @@ import android.revesz.seriestracker_v2.viewmodels.ShowDetailsViewModel
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 
 class ShowDetailsFragment : Fragment() {
@@ -35,8 +37,8 @@ class ShowDetailsFragment : Fragment() {
             callback = object : Callback {
                 override fun add(series: LocalData?) {
                     series?.let {
-                        //hideAppBarFab(fab)
-                        //showDetailViewModel.addPlantToGarden()
+                        hideAppBarFab(fab)
+                        it.isAdded = true
                         Snackbar.make(root, "Show added!", Snackbar.LENGTH_LONG)
                             .show()
                     }
@@ -45,6 +47,13 @@ class ShowDetailsFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    private fun hideAppBarFab(fab: FloatingActionButton) {
+        val params = fab.layoutParams as CoordinatorLayout.LayoutParams
+        val behavior = params.behavior as FloatingActionButton.Behavior
+        behavior.isAutoHideEnabled = false
+        fab.hide()
     }
 
 

@@ -1,8 +1,10 @@
 package android.revesz.seriestracker_v2.ui.allseries
 
 import android.os.Bundle
+import android.revesz.seriestracker_v2.MainActivity
 import android.revesz.seriestracker_v2.data.LocalData
 import android.revesz.seriestracker_v2.databinding.FragmentAllseriesBinding
+import android.revesz.seriestracker_v2.ui.home.HomeFragment
 import android.revesz.seriestracker_v2.utilities.InjectorUtils
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +16,10 @@ import androidx.lifecycle.observe
 import kotlinx.android.synthetic.main.fragment_allseries.*
 
 class AllSeriesFragment : Fragment() {
+
+    companion object{
+        val testData: LocalData = LocalData(303, "DummyShowX", 1, "Erc", false)
+    }
 
     private val allSeriesViewModel: AllSeriesViewModel by viewModels {
         InjectorUtils.provideAllSeriesViewModelFactory(requireContext())
@@ -46,7 +52,7 @@ class AllSeriesFragment : Fragment() {
 
     private fun subscribeUi(adapter: AllSeriesAdapter) {
         allSeriesViewModel.list.observe(viewLifecycleOwner) { list ->
-            adapter.submitList(listOf(LocalData(3, "DummyShowX", 1, "Erc")))
+            adapter.submitList(listOf(testData))
         }
     }
 

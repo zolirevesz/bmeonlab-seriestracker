@@ -38,6 +38,7 @@ abstract class AppDatabase : RoomDatabase() {
 
         private fun buildDatabase(context: Context): AppDatabase {
             return Room.databaseBuilder(context, AppDatabase::class.java, "series-db")
+                .allowMainThreadQueries()
                 .addCallback(object : RoomDatabase.Callback() {
                     override fun onCreate(db: SupportSQLiteDatabase) {
                         super.onCreate(db)
@@ -55,7 +56,7 @@ abstract class AppDatabase : RoomDatabase() {
         }
 
         private fun seriesResponseToLocalData(list: List<SeriesResponse>): List<LocalData> {
-            var localList: List<LocalData> = listOf(LocalData(1, "DummyShow", 3, "Abc"))
+            var localList: List<LocalData> = listOf(LocalData(303, "DummyShow", 3, "Abc"))
             //TODO convert response to local data
             return localList
         }

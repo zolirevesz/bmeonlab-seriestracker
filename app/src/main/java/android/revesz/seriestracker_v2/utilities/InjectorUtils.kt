@@ -4,6 +4,7 @@ import android.content.Context
 import android.revesz.seriestracker_v2.data.AppDatabase
 import android.revesz.seriestracker_v2.data.SeriesRepository
 import android.revesz.seriestracker_v2.ui.allseries.AllSeriesViewModelFactory
+import android.revesz.seriestracker_v2.ui.home.HomeViewModelFactory
 import android.revesz.seriestracker_v2.viewmodels.ShowDetailsViewModelFactory
 
 object InjectorUtils {
@@ -15,6 +16,11 @@ object InjectorUtils {
     fun provideAllSeriesViewModelFactory(context: Context): AllSeriesViewModelFactory {
         val repository = getSeriesRepository(context)
         return AllSeriesViewModelFactory(repository)
+    }
+
+    fun provideHomeViewModelFactory(context: Context): HomeViewModelFactory {
+        val repository = getSeriesRepository(context)
+        return HomeViewModelFactory(repository)
     }
 
     fun provideShowDetailsViewModelFactory(

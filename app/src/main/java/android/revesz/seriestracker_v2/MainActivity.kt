@@ -19,6 +19,7 @@ import com.google.gson.GsonBuilder
 import com.google.gson.Gson
 import android.os.AsyncTask.execute
 import android.revesz.seriestracker_v2.data.AppDatabase
+import android.revesz.seriestracker_v2.data.LocalData
 import android.revesz.seriestracker_v2.remote.RemoteServiceInterface
 import android.view.View
 import androidx.databinding.BindingAdapter

@@ -112,7 +112,7 @@ xmlns:tools="http://schemas.android.com/tools">
         android:clickable="true"
         android:layout_gravity="bottom|end"
         app:srcCompat="@drawable/ic_add_black_24dp"
-        app:isAdded="@{viewModel.isAdded}"
+        app:fabIsAdded="@{viewModel.series.added}"
         android:onClick="@{() -> callback.add(viewModel.series)}"
         app:shapeAppearance="@style/ShapeAppearance.Series.FAB"/>
 

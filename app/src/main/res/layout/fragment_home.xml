@@ -17,7 +17,7 @@
             android:paddingTop="@dimen/header_margin"
             app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
             app:spanCount="@integer/grid_columns"
-            tools:listitem="@layout/list_item_shows"/>
+            tools:listitem="@layout/list_item_home"/>
 
     </FrameLayout>
 

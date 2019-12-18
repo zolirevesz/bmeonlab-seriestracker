@@ -23,6 +23,8 @@ abstract class AppDatabase : RoomDatabase() {
         // For Singleton instantiation
         @Volatile private var instance: AppDatabase? = null
 
+        var first: Boolean = true
+
         val webservice by lazy {
             Retrofit.Builder()
                 .baseUrl("https://api.themoviedb.org/3/")
@@ -42,14 +44,13 @@ abstract class AppDatabase : RoomDatabase() {
                 .addCallback(object : RoomDatabase.Callback() {
                     override fun onCreate(db: SupportSQLiteDatabase) {
                         super.onCreate(db)
-                        GlobalScope.launch(Dispatchers.IO) {
-
-                            val seriesList: List<SeriesResponse> =
-                                webservice.getList(127030, "bcdaca52188a516d75a354990cc5981c")
-                            getInstance(context).localDataDao().insertAll(
-                                seriesResponseToLocalData(seriesList)
-                            )
-                        }
+                            GlobalScope.launch(Dispatchers.IO) {
+                                val seriesList: List<SeriesResponse> =
+                                    webservice.getList(127030, "bcdaca52188a516d75a354990cc5981c")
+                                getInstance(context).localDataDao().insertAll(
+                                    seriesResponseToLocalData(seriesList)
+                                )
+                           }
                     }
                 })
                 .build()

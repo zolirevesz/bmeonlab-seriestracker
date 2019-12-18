@@ -6,6 +6,10 @@ class SeriesRepository private constructor(private val localDataDao: LocalDataDa
 
     fun getShow(showId: Int) = localDataDao.getItemByID(showId)
 
+    fun addShow(series: LocalData) = localDataDao.insert(series)
+
+    fun updateShow(series: LocalData) = localDataDao.updateSeries(series)
+
     companion object {
 
         // For Singleton instantiation

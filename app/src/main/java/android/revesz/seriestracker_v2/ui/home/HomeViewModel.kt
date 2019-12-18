@@ -7,12 +7,14 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class HomeViewModel(seriesRepository: SeriesRepository) : ViewModel() {
+class HomeViewModel(private val seriesRepository: SeriesRepository) : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
         value = "These are your TV Shows"
     }
     val text: LiveData<String> = _text
 
-    val list: LiveData<List<LocalData>> = seriesRepository.getSeries() as LiveData<List<LocalData>>
+    var list: LiveData<List<LocalData>> = seriesRepository.getSeries() as LiveData<List<LocalData>>
+    //val list: List<LocalData>? = bigList.value?.filter { it.isAdded }
+
 }

@@ -1,12 +1,16 @@
 package android.revesz.seriestracker_v2.data
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 
 @Dao
 interface LocalDataDao {
     @Insert
     fun insertAll(serieslist: List<LocalData>)
+
+    @Insert
+    fun insert(series: LocalData)
 
     @Query("SELECT * FROM LocalData")
     fun getAll(): LiveData<List<LocalData>>

@@ -2,6 +2,7 @@ package android.revesz.seriestracker_v2.adapters
 
 import android.revesz.seriestracker_v2.R
 import android.text.method.LinkMovementMethod
+import android.view.View
 import android.widget.TextView
 import androidx.core.text.HtmlCompat
 import androidx.databinding.BindingAdapter
@@ -27,11 +28,11 @@ fun bindRenderHtml(view: TextView, description: String?) {
     }
 }
 
-@BindingAdapter("isAdded")
-fun bindIsAdded(view: FloatingActionButton, isAdded: Boolean?) {
+@BindingAdapter("fabIsAdded")
+fun bindIsAdded(view: View, isAdded: Boolean?) {
     if (isAdded == null || isAdded) {
-        view.hide()
+        view.visibility = View.GONE
     } else {
-        view.show()
+        view.visibility = View.VISIBLE
     }
 }

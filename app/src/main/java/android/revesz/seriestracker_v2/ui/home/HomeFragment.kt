@@ -41,10 +41,8 @@ class HomeFragment : Fragment() {
     }
 
     private fun subscribeUi(adapter: AllSeriesAdapter) {
-        if (testData.isAdded) {
-            homeViewModel.list.observe(viewLifecycleOwner) { list ->
-                adapter.submitList(listOf(testData))
-            }
+        homeViewModel.list.observe(viewLifecycleOwner) { list ->
+            adapter.submitList(list.filter { it.isAdded })
         }
     }
 }

@@ -14,11 +14,13 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.observe
 import kotlinx.android.synthetic.main.fragment_allseries.*
+import java.time.LocalDateTime
+import kotlin.random.Random
 
 class AllSeriesFragment : Fragment() {
 
     companion object{
-        val testData: LocalData = LocalData(303, "DummyShowX", 1, "Erc", false)
+        val testData: LocalData = LocalData(Random.nextInt(0, 1000), "DummyShowX", Random.nextInt(1, 10), "Lorem Ipsum", false)
     }
 
     private val allSeriesViewModel: AllSeriesViewModel by viewModels {
@@ -32,11 +34,12 @@ class AllSeriesFragment : Fragment() {
     ): View? {
         val binding = FragmentAllseriesBinding.inflate(inflater, container, false)
         context ?: return binding.root
-
         val adapter = AllSeriesAdapter()
         binding.seriesList.adapter = adapter
         subscribeUi(adapter)
-
+        if (allSeriesViewModel.list.value == null) {
+            allSeriesViewModel.add(testData)
+        }
         setHasOptionsMenu(true)
         return binding.root
     }
@@ -52,7 +55,7 @@ class AllSeriesFragment : Fragment() {
 
     private fun subscribeUi(adapter: AllSeriesAdapter) {
         allSeriesViewModel.list.observe(viewLifecycleOwner) { list ->
-            adapter.submitList(listOf(testData))
+            adapter.submitList(list)
         }
     }
 

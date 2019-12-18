@@ -39,6 +39,7 @@ class ShowDetailsFragment : Fragment() {
                     series?.let {
                         hideAppBarFab(fab)
                         it.isAdded = true
+                        showDetailViewModel.update(it)
                         Snackbar.make(root, "Show added!", Snackbar.LENGTH_LONG)
                             .show()
                     }

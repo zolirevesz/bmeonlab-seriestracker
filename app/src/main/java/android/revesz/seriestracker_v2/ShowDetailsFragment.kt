@@ -15,6 +15,8 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_showdetails.*
 
 class ShowDetailsFragment : Fragment() {
 
@@ -32,6 +34,7 @@ class ShowDetailsFragment : Fragment() {
         val binding = DataBindingUtil.inflate<FragmentShowdetailsBinding>(
             inflater, R.layout.fragment_showdetails, container, false
         ).apply {
+            Picasso.with(context).load(showDetailViewModel.getImgUrl()).into(imgShow)
             viewModel = showDetailViewModel
             lifecycleOwner = viewLifecycleOwner
             callback = object : Callback {
@@ -46,6 +49,7 @@ class ShowDetailsFragment : Fragment() {
                 }
             }
         }
+
 
         return binding.root
     }

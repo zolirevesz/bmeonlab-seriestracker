@@ -18,7 +18,9 @@ data class LocalData (
     @ColumnInfo(name = "description")
     var description: String = "",
     @ColumnInfo(name = "isadded")
-    var isAdded: Boolean =  false
+    var isAdded: Boolean =  false,
+    @ColumnInfo(name = "img")
+    var imgPath: String =  ""
 ) : Serializable
 
 @Entity(foreignKeys = [ForeignKey(entity = LocalData::class,

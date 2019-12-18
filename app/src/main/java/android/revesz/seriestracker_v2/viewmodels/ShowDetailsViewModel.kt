@@ -15,4 +15,8 @@ class ShowDetailsViewModel (private val seriesRepository: SeriesRepository, priv
     fun update(series: LocalData) {
         seriesRepository.updateShow(series)
     }
+
+    fun getImgUrl(): String {
+        return series.imgPath
+    }
 }

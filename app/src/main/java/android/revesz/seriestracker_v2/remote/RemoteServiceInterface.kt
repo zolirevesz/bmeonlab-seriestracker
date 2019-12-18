@@ -21,5 +21,5 @@ interface RemoteServiceInterface {
     suspend fun getEpisode(@Path("tv_id") id : Int, @Path("season_number") season_number : Int, @Path("episode_number") episode_number : Int, @Query("api_key") apikey : String): EpisodeResponse
 
     @GET("list/{list_id}")
-    suspend fun getList(@Path("list_id") id: Int, @Query("api_key") apikey: String) : List<SeriesResponse>
+    suspend fun getList(@Path("list_id") id: Int, @Query("api_key") apikey: String) : SeriesResponse
 }

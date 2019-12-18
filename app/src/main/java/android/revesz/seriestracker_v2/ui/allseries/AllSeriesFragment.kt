@@ -19,10 +19,6 @@ import kotlin.random.Random
 
 class AllSeriesFragment : Fragment() {
 
-    companion object{
-        val testData: LocalData = LocalData(Random.nextInt(0, 1000), "DummyShowX", Random.nextInt(1, 10), "Lorem Ipsum", false)
-    }
-
     private val allSeriesViewModel: AllSeriesViewModel by viewModels {
         InjectorUtils.provideAllSeriesViewModelFactory(requireContext())
     }
@@ -37,9 +33,7 @@ class AllSeriesFragment : Fragment() {
         val adapter = AllSeriesAdapter()
         binding.seriesList.adapter = adapter
         subscribeUi(adapter)
-        if (allSeriesViewModel.list.value == null) {
-            allSeriesViewModel.add(testData)
-        }
+
         setHasOptionsMenu(true)
         return binding.root
     }

@@ -1,1 +1,1 @@
-# seriestracker-onlab
+# SeriesTracker app

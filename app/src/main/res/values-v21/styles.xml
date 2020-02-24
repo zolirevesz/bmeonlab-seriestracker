@@ -6,7 +6,7 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
-    <style name="ShapeAppearance.Series.Card" parent="ShapeAppearance.MaterialComponents">
+    <style name="ShapeAppearance.Series.Card" parent="Theme.MaterialComponents">
         <item name="cornerFamily">rounded</item>
 
         <item name="cornerSizeTopLeft">0dp</item>

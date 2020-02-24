@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Sorozat követő</string>
+    <string name="navigation_drawer_open">Navigációs felület megnyitása</string>
+    <string name="navigation_drawer_close">Navigációs felület bezárása</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Beállítások</string>
+
+    <string name="menu_home">Kezdőképernyő</string>
+    <string name="menu_allseries">Összes sorozat</string>
+    <string name="menu_tools">Eszközök</string>
+    <string name="picture_of_show">Sorozat képe</string>
+    <string name="other">Többi</string>
+
+    <plurals name="seasonnumber_text">
+        <item quantity="one">1 évad</item>>
+        <item quantity="other">%d évad</item>
+    </plurals>
+</resources>

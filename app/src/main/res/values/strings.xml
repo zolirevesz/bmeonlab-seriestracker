@@ -9,10 +9,14 @@
 
     <string name="menu_home">Home</string>
     <string name="menu_allseries">All Series</string>
-    <string name="menu_slideshow">Slideshow</string>
     <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
-    <string name="communicate">Communicate</string>
     <string name="picture_of_show">Picture of Show</string>
+    <string name="other">Other</string>
+    <string name="show_name">Show name</string>
+    <string name="number_of_seasons">Number of Seasons</string>
+
+    <plurals name="seasonnumber_text">
+        <item quantity="one">1 season</item>>
+        <item quantity="other">%d seasons</item>
+    </plurals>
 </resources>

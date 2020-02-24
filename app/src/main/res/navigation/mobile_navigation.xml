@@ -15,13 +15,11 @@
         android:id="@+id/nav_allseries"
         android:name="android.revesz.seriestracker_v2.ui.allseries.AllSeriesFragment"
         android:label="@string/menu_allseries"
-        tools:layout="@layout/fragment_allseries" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="android.revesz.seriestracker_v2.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        tools:layout="@layout/fragment_allseries" >
+        <action
+            android:id="@+id/action_nav_allseries_to_showDetailsFragment"
+            app:destination="@id/showDetailsFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_tools"
@@ -30,14 +28,11 @@
         tools:layout="@layout/fragment_tools" />
 
     <fragment
-        android:id="@+id/nav_share"
-        android:name="android.revesz.seriestracker_v2.ui.share.ShareFragment"
-        android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
-
-    <fragment
-        android:id="@+id/nav_send"
-        android:name="android.revesz.seriestracker_v2.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+        android:id="@+id/showDetailsFragment"
+        android:name="android.revesz.seriestracker_v2.ShowDetailsFragment"
+        android:label="ShowDetailsFragment" >
+        <argument
+            android:name="showId"
+            app:argType="integer" />
+    </fragment>
 </navigation>

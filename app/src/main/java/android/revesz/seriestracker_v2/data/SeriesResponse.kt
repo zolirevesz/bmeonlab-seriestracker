@@ -11,5 +11,6 @@ data class SeriesResponse(
     val genres: List<Genre>,
     val number_of_seasons : Int,
     val overview : String, //description
-    val seasons : List<Season>
+    val seasons : List<Season>,
+    val poster_path: String
 )
